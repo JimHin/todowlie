@@ -30,11 +30,12 @@
       bordered
       content-class="bg-grey-1"
     >
+    <AuthenticateIndex />
     </q-drawer>
 
     <q-page-container>
       <router-view />
-      <div class="authenticate_button">
+      <div class="authenticate_button" v-if="this.$route.fullPath === '/'">
         <q-btn color="secondary" label="M'Authentifier" @click="leftDrawerOpen = !leftDrawerOpen" />
       </div>
     </q-page-container>
@@ -73,8 +74,13 @@
   }
 </style>
 <script>
+import AuthenticateIndex from 'pages/Authenticate'
+
 export default {
   name: 'MainLayout',
+  components: {
+    AuthenticateIndex
+  },
   data () {
     return {
       leftDrawerOpen: false
