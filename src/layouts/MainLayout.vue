@@ -41,7 +41,7 @@
   </q-layout>
 </template>
 <style scoped>
-  /* header's height */
+  /* header's height definition*/
   .header{
     height: 11em;
   }
@@ -54,12 +54,14 @@
     display: flex;
     justify-content: center;
   }
+  /* MDI icons container style */
   .mdi{
     display: flex;
     justify-content: space-around;
     max-width: 50%;
     width: 40%;
   }
+  /* MDI icons style */
   .notification_icon{
     font-size: 2em;
   }
