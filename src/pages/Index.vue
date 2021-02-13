@@ -1,12 +1,11 @@
 <template>
-  <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-full.svg"
-    >
-  </q-page>
+    <p class="text-center">Afin d'accéder à votre Todolist, <br> merci de bien vouloir vous authentifier.</p>
 </template>
-
+<style scoped>
+  p{
+    margin-top: 3em;
+  }
+</style>
 <script>
 export default {
   name: 'PageIndex'
