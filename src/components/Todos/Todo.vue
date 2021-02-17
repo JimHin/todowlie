@@ -1,6 +1,5 @@
 <template>
     <q-item
-      @click="modifyTodo({id: todo.id, updates: {completed: !todo.completed}})"
       clickable
       v-ripple
       :class="todo.completed ? 'bg-grey-4' : 'bg-grey-2'"
@@ -8,7 +7,7 @@
       <q-item-section color="todo">
         <q-item-label>{{ todo.title }}</q-item-label>
       </q-item-section>
-      <q-item-section side top>
+      <q-item-section side top @click="removeTodo({id: todo.id, updates: {completed: !todo.completed}})">
         <q-checkbox color="secondary" :value="todo.completed" class="no-pointer-events"/>
       </q-item-section>
     </q-item>
@@ -26,7 +25,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions('todos', ['modifyTodo'])
+    ...mapActions('todos', ['removeTodo'])
   }
 }
 </script>

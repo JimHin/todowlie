@@ -4,7 +4,7 @@ const state = {
     {
       id: 1,
       title: 'Acheter des piles',
-      content: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum repudiandae eveniet reprehenderit eos provident voluptatum, deleniti facilis asperiores in. Delectus repellat nulla rerum? Quasi sint facere esse. Asperiores, tenetur corrupti.',
+      detail: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum repudiandae eveniet reprehenderit eos provident voluptatum, deleniti facilis asperiores in. Delectus repellat nulla rerum? Quasi sint facere esse. Asperiores, tenetur corrupti.',
       completed: false,
       createdAt: '06.01.2021',
       completedAt: ''
@@ -12,7 +12,7 @@ const state = {
     {
       id: 2,
       title: 'Aller signer le contrat Owlie',
-      content: '',
+      detail: '',
       completed: false,
       createdAt: '17.01.2021',
       completedAt: ''
@@ -20,7 +20,7 @@ const state = {
     {
       id: 3,
       title: 'Connecter l\'appli au firestore',
-      content: '',
+      detail: '',
       completed: false,
       createdAt: '06.02.2021',
       completedAt: ''
@@ -28,7 +28,7 @@ const state = {
     {
       id: 4,
       title: 'conditionné accés à todolist au fait d\'être connecté',
-      content: '',
+      detail: '',
       completed: false,
       createdAt: '06.02.2021',
       completedAt: ''
@@ -41,8 +41,8 @@ Mutations : méthode qui manipulent les données
 Les mutations ne peuvent pas être asynchrones !!!
  */
 const mutations = {
-  MODIFY_TODO (state, payload) {
-    console.log('Payload mutation:', payload)
+  REMOVE_TODO (state, payload) {
+    // console.log('Payload mutation:', payload)
     // Recherche la tâche et retourne sa position dans le tableau, son index
     const index = state.todos.findIndex(el => el.id === payload.id)
 
@@ -51,6 +51,9 @@ const mutations = {
       // Modifie l'objet trouvé avec les nouvelles valeurs
       Object.assign(state.todos[index], payload.updates)
     }
+    // Filtre les données du tableau
+    // et garde les tâches dont l'id est différent de celui à supprimer
+    setTimeout(function () { state.todos = state.todos.filter(el => el.id !== payload.id) }, 800)
   }
 }
 /*
@@ -58,9 +61,9 @@ Actions : méthodes du magasin qui font appel aux mutations
 Elles peuvent être asynchrones !
  */
 const actions = {
-  modifyTodo ({ commit }, payload) {
+  removeTodo ({ commit }, payload) {
     // Valide la mutation et y passe les données
-    commit('MODIFY_TODO', payload)
+    commit('REMOVE_TODO', payload)
   }
 }
 
