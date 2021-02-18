@@ -5,33 +5,25 @@ const state = {
       id: 1,
       title: 'Acheter des piles',
       detail: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum repudiandae eveniet reprehenderit eos provident voluptatum, deleniti facilis asperiores in. Delectus repellat nulla rerum? Quasi sint facere esse. Asperiores, tenetur corrupti.',
-      completed: false,
-      createdAt: '06.01.2021',
-      completedAt: ''
+      completed: false
     },
     {
       id: 2,
       title: 'Aller signer le contrat Owlie',
       detail: '',
-      completed: false,
-      createdAt: '17.01.2021',
-      completedAt: ''
+      completed: false
     },
     {
       id: 3,
       title: 'Connecter l\'appli au firestore',
       detail: '',
-      completed: false,
-      createdAt: '06.02.2021',
-      completedAt: ''
+      completed: false
     },
     {
       id: 4,
       title: 'conditionné accés à todolist au fait d\'être connecté',
       detail: '',
-      completed: false,
-      createdAt: '06.02.2021',
-      completedAt: ''
+      completed: false
     }
   ]
 }
@@ -45,17 +37,21 @@ const mutations = {
     // console.log('Payload mutation:', payload)
     // Recherche la tâche et retourne sa position dans le tableau, son index
     const index = state.todos.findIndex(el => el.id === payload.id)
-
     // Si une tâche a été trouvée
     if (index !== -1) {
       // Modifie l'objet trouvé avec les nouvelles valeurs
       Object.assign(state.todos[index], payload.updates)
+      // Filtre les données du tableau
+      // et garde les tâches dont l'id est différent de celui à supprimer
+      state.todos = state.todos.filter(el => el.id !== payload.id)
     }
-    // Filtre les données du tableau
-    // et garde les tâches dont l'id est différent de celui à supprimer
-    setTimeout(function () { state.todos = state.todos.filter(el => el.id !== payload.id) }, 800)
+  },
+  ADD_TODO (state, todo) {
+    // Ajout de la tâche à fin du tableau
+    state.todos.push(todo)
   }
 }
+
 /*
 Actions : méthodes du magasin qui font appel aux mutations
 Elles peuvent être asynchrones !
@@ -64,6 +60,18 @@ const actions = {
   removeTodo ({ commit }, payload) {
     // Valide la mutation et y passe les données
     commit('REMOVE_TODO', payload)
+  },
+  addTodo ({ commit }, todo) {
+    let uId = 1
+    // Si le tableau contient des éléments
+    if (state.todos.length) {
+      // Récupère l'id MAX et lui ajoute 1
+      uId = Math.max(...state.todos.map(todo => todo.id)) + 1
+    }
+    // Ajoute le nouvel id à la tache
+    todo.id = uId
+    // Commite l'ajout
+    commit('ADD_TODO', todo)
   }
 }
 
