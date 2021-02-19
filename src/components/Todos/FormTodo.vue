@@ -28,7 +28,9 @@ export default {
   name: 'FormTodo',
   data () {
     return {
+      // booléen permettant de savoir si input est affiché ou non
       newTodoOpen: false,
+      // modèle d'une todo
       todo: {
         id: '',
         title: '',

@@ -49,6 +49,17 @@ const mutations = {
   ADD_TODO (state, todo) {
     // Ajout de la tâche à fin du tableau
     state.todos.push(todo)
+  },
+  UPDATE_TODO (state, payload) {
+    // console.log('Payload mutation:', payload)
+    // Recherche la tâche et retourne sa position dans le tableau, son index
+    const index = state.todos.findIndex(el => el.id === payload.id)
+    // Si une tâche a été trouvée
+    if (index !== -1) {
+      // Modifie l'objet trouvé avec les nouvelles valeurs
+      Object.assign(state.todos[index].detail, payload.updates)
+      state.todos = state.todos.filter(el => el.id !== 0)
+    }
   }
 }
 
@@ -72,6 +83,9 @@ const actions = {
     todo.id = uId
     // Commite l'ajout
     commit('ADD_TODO', todo)
+  },
+  modifyTodo ({ commit }, payload) {
+    commit('UPDATE_TODO', payload)
   }
 }
 

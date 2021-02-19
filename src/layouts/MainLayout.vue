@@ -39,7 +39,7 @@
     <AuthenticateIndex />
     </q-drawer>
 
-    <q-page-container>
+    <q-page-container >
       <router-view />
       <div class="authenticate_button" v-if="this.$route.fullPath === '/'">
         <q-btn color="secondary" label="M'Authentifier" @click="leftDrawerOpen = !leftDrawerOpen" />
