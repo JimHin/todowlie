@@ -6,20 +6,6 @@ Une web app de gestion de tâches sur tout vos appareils
 ```bash
 yarn
 ```
-
-### Démarrer l'application en mode hotreload
-```bash
-quasar dev
-```
-
-### Build de l'application pour la production
-```bash
-quasar build
-```
-
-### Customiser votre configuration
-See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
-
 ### Configurer l'environnement de l'appli
 ## Déclarer vos id firebase dans src/boot/firebase.js 
     
@@ -35,4 +21,19 @@ See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
           measurementId: ''
         }
         firebaseService.fBInit(config)
+        
+### Démarrer l'application en mode hotreload
+```bash
+quasar dev
+```
+
+### Build de l'application pour la production
+```bash
+quasar build
+```
+
+### Customiser votre configuration
+See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
+
+
 
