@@ -22,26 +22,26 @@ See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
 
 ### Configurer l'environnement de l'appli
 ## Déclarer un fichier .quasar.env.json avec le contenu suivant et votre configuration pour firebase
-{
-  "development": {
-    "ENV_TYPE": "Running Development",
-    "ENV_DEV": "Development",
-    "FIREBASE_CONFIG":{
-      "apiKey": "QfsjkdhfdkjKJHKUKBKJXSHdsfsdKSJBBNJkjhtck",
-      "authDomain": "votre dmoaine.firebaseapp.com",
-      "projectId": "le nom de votre app",
-      "storageBucket": " xxxxxxxxxxxx",
-      "messagingSenderId": "xxxxxxxxxxxxxxxxx",
-      "appId": "x:xxxxxxxxx:xxxx:xxxxxx",
-      "measurementId": "X-XXXXXXXX"
+    {
+      "development": {
+        "ENV_TYPE": "Running Development",
+        "ENV_DEV": "Development",
+        "FIREBASE_CONFIG":{
+          "apiKey": "QfsjkdhfdkjKJHKUKBKJXSHdsfsdKSJBBNJkjhtck",
+          "authDomain": "votre dmoaine.firebaseapp.com",
+          "projectId": "le nom de votre app",
+          "storageBucket": " xxxxxxxxxxxx",
+          "messagingSenderId": "xxxxxxxxxxxxxxxxx",
+          "appId": "x:xxxxxxxxx:xxxx:xxxxxx",
+          "measurementId": "X-XXXXXXXX"
+        }
+      },
+      "production": {
+        "ENV_TYPE": "Running Production",
+        "ENV_PROD": "Production",
+      },
+      "test": {
+        "ENV_TYPE": "Running Test",
+        "ENV_Test": "Test"
+      }
     }
-  },
-  "production": {
-    "ENV_TYPE": "Running Production",
-    "ENV_PROD": "Production",
-  },
-  "test": {
-    "ENV_TYPE": "Running Test",
-    "ENV_Test": "Test"
-  }
-}
