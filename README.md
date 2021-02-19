@@ -21,27 +21,18 @@ quasar build
 See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
 
 ### Configurer l'environnement de l'appli
-## Déclarer un fichier .quasar.env.json avec le contenu suivant et votre configuration pour firebase
-    {
-      "development": {
-        "ENV_TYPE": "Running Development",
-        "ENV_DEV": "Development",
-        "FIREBASE_CONFIG":{
-          "apiKey": "QfsjkdhfdkjKJHKUKBKJXSHdsfsdKSJBBNJkjhtck",
-          "authDomain": "votre dmoaine.firebaseapp.com",
-          "projectId": "le nom de votre app",
-          "storageBucket": " xxxxxxxxxxxx",
-          "messagingSenderId": "xxxxxxxxxxxxxxxxx",
-          "appId": "x:xxxxxxxxx:xxxx:xxxxxx",
-          "measurementId": "X-XXXXXXXX"
+## Déclarer vos id firebase dans src/boot/firebase.js 
+    
+
+      export default async () => {
+        const config = {
+          apiKey: '',
+          authDomain: '',
+          projectId: '',
+          storageBucket: '',
+          messagingSenderId: '',
+          appId: '',
+          measurementId: ''
         }
-      },
-      "production": {
-        "ENV_TYPE": "Running Production",
-        "ENV_PROD": "Production",
-      },
-      "test": {
-        "ENV_TYPE": "Running Test",
-        "ENV_Test": "Test"
-      }
-    }
+        firebaseService.fBInit(config)
+
