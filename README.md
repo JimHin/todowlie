@@ -2,25 +2,22 @@
 
 Une web app de gestion de tâches sur tout vos appareils
 
-## Install the dependencies
+## Installation des dependencies
 ```bash
 yarn
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+### Démarrer l'application en mode hotreload
 ```bash
 quasar dev
 ```
 
-### Lint the files
-```bash
-yarn run lint
-```
-
-### Build the app for production
+### Build de l'application pour la production
 ```bash
 quasar build
 ```
 
-### Customize the configuration
+### Customiser votre configuration
 See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
+
+### Naviguer dans l'application
