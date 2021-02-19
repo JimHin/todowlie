@@ -49,6 +49,14 @@ export default {
       key: '',
       email: ''
     }
+  },
+  methods: {
+    onSubmit () {
+      console.log('submit')
+    },
+    onRegister () {
+      console.log('register')
+    }
   }
 }
 </script>
