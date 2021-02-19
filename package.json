@@ -7,17 +7,23 @@
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "echo \"No test specified\" && exit 0",
+    "dev": "QENV=development quasar dev",
+    "test-dev": "QENV=test quasar dev",
+    "combined": "QENV=development+test quasar dev",
+    "build": "QENV=production quasar build"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
     "core-js": "^3.6.5",
     "firebase": "^8.2.7",
+    "firebaseui": "^4.7.3",
     "quasar": "^1.0.0"
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0",
+    "@quasar/quasar-app-extension-qenv": "^1.0.4",
     "babel-eslint": "^10.0.1",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.0",

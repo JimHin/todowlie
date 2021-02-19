@@ -1,22 +1,33 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="leftDrawerOpen = !leftDrawerOpen"
-        />
+    <q-header elevated class="header">
+         <div class="q-pa-md">
+            <div class="row">
+                <div class="col">
+                    <q-btn
+                        flat
+                        dense
+                        round
+                        icon="menu"
+                        aria-label="Menu"
+                        @click="leftDrawerOpen = !leftDrawerOpen"
+                    />
+                </div>
+                <div class="col fit row wrap justify-around items-center content-around" >
+                        <q-icon name="notifications" class="notification_icon"/>
+                        <q-icon name="share" class="share_icon"/>
+                        <q-icon name="search" class="search_icon"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" id="addButton">
+                    <form-todo />
+                </div>
+                <div class="col-3">
+                </div>
+            </div>
 
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
-      </q-toolbar>
+        </div>
     </q-header>
 
     <q-drawer
@@ -25,83 +36,58 @@
       bordered
       content-class="bg-grey-1"
     >
-      <q-list>
-        <q-item-label
-          header
-          class="text-grey-8"
-        >
-          Essential Links
-        </q-item-label>
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
+    <AuthenticateIndex />
     </q-drawer>
 
-    <q-page-container>
+    <q-page-container >
       <router-view />
+      <div class="authenticate_button" v-if="this.$route.fullPath === '/'">
+        <q-btn color="secondary" label="M'Authentifier" @click="leftDrawerOpen = !leftDrawerOpen" />
+      </div>
     </q-page-container>
   </q-layout>
 </template>
-
-<script>
-import EssentialLink from 'components/EssentialLink.vue'
-
-const linksData = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
+<style scoped>
+  /* header's height definition*/
+  .header{
+    height: 11em;
   }
-]
-
+  /* title's margin top increase */
+  .title{
+    margin-top: 25%;
+  }
+  /* authenticate button's container justify */
+  .authenticate_button{
+    display: flex;
+    justify-content: center;
+  }
+  /* MDI icons style */
+  .notification_icon{
+    font-size: 2em;
+  }
+  .share_icon{
+    font-size: 2em;
+  }
+  .search_icon{
+    font-size: 2em;
+  }
+</style>
+<script>
+import AuthenticateIndex from 'pages/Authenticate'
+import FormTodo from 'src/components/Todos/FormTodo.vue'
 export default {
   name: 'MainLayout',
-  components: { EssentialLink },
+  components: {
+    AuthenticateIndex,
+    FormTodo
+  },
   data () {
     return {
-      leftDrawerOpen: false,
-      essentialLinks: linksData
+      leftDrawerOpen: false
     }
+  },
+  methods: {
+
   }
 }
 </script>

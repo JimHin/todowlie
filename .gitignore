@@ -31,3 +31,8 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
+
+.quasar.env.json
+
+# Fichier base.js qui contient les identifiants d'accés firebase
+/src/services/firebase/base.js
