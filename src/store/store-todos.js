@@ -58,7 +58,9 @@ const mutations = {
     if (index !== -1) {
       // Modifie l'objet trouvé avec les nouvelles valeurs
       Object.assign(state.todos[index].detail, payload.updates)
-      state.todos = state.todos.filter(el => el.id !== 0)
+      // Filtre les données du tableau
+      // et garde les tâches dont l'id est différent de celui à supprimer
+      state.todos = state.todos.filter(el => el.id !== payload.id)
     }
   }
 }

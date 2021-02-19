@@ -27,8 +27,12 @@
       />
 
       <div>
-        <q-btn label="Me Connecter" type="submit" color="secondary" @click="onSubmit"/>
-        <q-btn label="Créer un compte" type="reset" color="primary" flat class="q-ml-sm" @click="onRegister"/>
+        <q-btn label="Me Connecter" type="submit" color="secondary" to="/todolist"
+          exact
+          clickable/>
+        <q-btn label="Créer un compte" type="reset" color="primary" flat class="q-ml-sm" to="/todolist"
+          exact
+          clickable/>
       </div>
     </q-form>
 
