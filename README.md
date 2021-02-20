@@ -26,6 +26,10 @@ yarn
 ```bash
 quasar dev
 ```
+### Navigation
+
+Pour le moment auth n'est pas fonctionnel. Les boutons "SE CONNECTER" et "CREER UN COMPTE" envoi sur la route /todolist
+pour afficher la vue de la liste des tâches
 
 ### Build de l'application pour la production
 ```bash
