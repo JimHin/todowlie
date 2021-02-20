@@ -15,10 +15,8 @@
           </q-item-section>
           </q-item>
           <div v-if="toggleDetail">
-            <q-item class="detail" id="editable" >
-              {{ todo.detail }}
-            </q-item>
-            <q-icon
+            <textarea v-model="todo.detail" class="detail" id="editable"></textarea>
+           <!--  <q-icon
               name="create"
               class="create_icon"
               @click.stop="displayFormDetail = true"
@@ -26,7 +24,7 @@
               id="penIcon"
               style="font-size: 1.5em; margin-left: 60%;"
               />
-            <!-- Appel au composant FormDetail.vue  charger d'afficher le formulaire permettant la modification des détails d'une todo-->
+            Appel au composant FormDetail.vue  charger d'afficher le formulaire permettant la modification des détails d'une todo
             <q-dialog
               v-model="displayFormDetail"
               persistent
@@ -38,7 +36,7 @@
               >
               </form-detail>
             </q-card>
-            </q-dialog>
+            </q-dialog>-->
           </div>
           <div class="detail" v-if="!toggleDetail">
                 {{ todo.detail.substr(0, 30) }} ...
@@ -52,7 +50,7 @@ import { mapActions } from 'vuex'
 export default {
   name: 'Todo',
   components: {
-    'form-detail': require('components/Todos/FormDetail').default
+    // 'form-detail': require('components/Todos/FormDetail').default
   },
   data () {
     return {
@@ -76,13 +74,15 @@ export default {
   .detail{
     width: 100%;
     background-color: white;
-    min-height: 30px;
+    border: none;
+    padding: 5px;
   }
   #todoMainContainer{
     margin-top: 1em;
   }
   #editable {
     padding: 5px;
+    min-height: 150px;
   }
   #done {
     margin-left: 15%;
