@@ -1,5 +1,6 @@
 <template>
 <div class="q-pa-md" style="max-width: 400px">
+  <div v-if="!this.$store.state.loggedIn">
     <div class="flex flex-start">
       <h5>Me connecter</h5>
       <p>Entrez vos identifiants pour vous connectez</p>
@@ -32,14 +33,13 @@
         <q-btn label="Créer un compte" type="submit" color="primary" flat class="q-ml-sm" @click="ifRegister = true"/>
       </div>
     </q-form>
-
+  </div>
   </div>
 </template>
-<style scoped>
 
-</style>
 <script>
 import { mapActions } from 'vuex'
+// composant exprimant le formulaire dédié à l'authentification d'un l'utilisateur
 export default {
   name: 'AuthenticateIndex',
   props: ['tab'],
@@ -49,6 +49,7 @@ export default {
         email: '',
         password: ''
       },
+      // Booléen se chargeant d'identifier le bouton de l'action choisie par l'utilisateur
       ifLogin: false,
       ifRegister: false
     }
@@ -83,3 +84,6 @@ export default {
   }
 }
 </script>
+<style scoped>
+
+</style>
