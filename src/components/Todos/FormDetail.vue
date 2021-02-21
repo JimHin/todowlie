@@ -28,7 +28,6 @@ export default {
     // Mappage des actions ('nomNamespace', ['nomGetter'])
     ...mapActions('todos', ['modifyTodo']),
     formSubmit () {
-      this.mounted()
       if (this.todo.id) {
       // Construction du payload
         const payload = {

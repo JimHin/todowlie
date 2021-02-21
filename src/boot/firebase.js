@@ -1,4 +1,6 @@
 import firebaseService from '../services/firebase'
+import 'firebase/auth'
+import 'firebase/firestore'
 
 export default async () => {
   const config = {
