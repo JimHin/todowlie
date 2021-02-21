@@ -36,7 +36,10 @@
       bordered
       content-class="bg-grey-1"
     >
-    <AuthenticateIndex />
+    <authenticate :tab="tab"/>
+    <div v-if="loggedIn">
+      connecté
+    </div>
     </q-drawer>
 
     <q-page-container >
@@ -73,18 +76,22 @@
   }
 </style>
 <script>
-import AuthenticateIndex from 'pages/Authenticate'
+import { mapState } from 'vuex'
 import FormTodo from 'src/components/Todos/FormTodo.vue'
 export default {
   name: 'MainLayout',
   components: {
-    AuthenticateIndex,
+    authenticate: require('pages/Authenticate').default,
     FormTodo
   },
   data () {
     return {
-      leftDrawerOpen: false
+      leftDrawerOpen: false,
+      tab: 'authenticate'
     }
+  },
+  computed: {
+    ...mapState('auth', ['loggedIn'])
   },
   methods: {
 
