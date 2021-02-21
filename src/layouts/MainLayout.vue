@@ -36,7 +36,15 @@
       bordered
       content-class="bg-grey-1"
     >
-    <AuthenticateIndex />
+    <div>
+      <!-- Appel de la page Authenticate.vue : formulaire login register -->
+      <authenticate v-if="!loggedIn" :tab="tab"/>
+      <!-- Sinon appel de la page Logout.vue : bouton de déconnexion -->
+      <div v-else>
+        <p>Bonjour {{ /* l'email de l'utilisateur */}}</p>
+       <logout />
+      </div>
+    </div>
     </q-drawer>
 
     <q-page-container >
@@ -47,21 +55,50 @@
     </q-page-container>
   </q-layout>
 </template>
+
+<script>
+import { mapState } from 'vuex'
+import FormTodo from 'src/components/Todos/FormTodo.vue'
+export default {
+  name: 'MainLayout',
+  components: {
+    // Les trois composants utilisés dans la SPA
+    authenticate: require('pages/Authenticate').default,
+    logout: require('pages/Logout').default,
+    FormTodo
+  },
+  data () {
+    return {
+      // Booléen exprimant l'ouverture du menu side ou non
+      leftDrawerOpen: false,
+      tab: 'authenticate'
+    }
+  },
+  computed: {
+    // Spread du state vuex pour avoir accés au booléen loggedIn correspondant à utilisateur connecté ou non
+    ...mapState('auth', ['loggedIn'])
+  },
+  methods: {
+
+  }
+}
+</script>
+
 <style scoped>
-  /* header's height definition*/
+  /* hauteur du header*/
   .header{
     height: 11em;
   }
-  /* title's margin top increase */
+  /* marge haute du titre */
   .title{
     margin-top: 25%;
   }
-  /* authenticate button's container justify */
+  /* justification du container de bouton */
   .authenticate_button{
     display: flex;
     justify-content: center;
   }
-  /* MDI icons style */
+  /* style des icônes MDI  */
   .notification_icon{
     font-size: 2em;
   }
@@ -72,22 +109,3 @@
     font-size: 2em;
   }
 </style>
-<script>
-import AuthenticateIndex from 'pages/Authenticate'
-import FormTodo from 'src/components/Todos/FormTodo.vue'
-export default {
-  name: 'MainLayout',
-  components: {
-    AuthenticateIndex,
-    FormTodo
-  },
-  data () {
-    return {
-      leftDrawerOpen: false
-    }
-  },
-  methods: {
-
-  }
-}
-</script>

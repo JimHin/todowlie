@@ -21,6 +21,7 @@ export default {
   components: {
     // On embarque le composant Todo
     Todo: require('components/Todos/Todo').default
+    // Register: require('pages/TodoList.vue').default
   },
   computed: {
     // On récupère la donnée de vuex
